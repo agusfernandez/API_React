@@ -7,10 +7,13 @@ const Search = ({ findCharacters })=>{
     const getCharacters = (e)=>{
         e.preventDefault();
         findCharacters(character);
+
     }
+    console.log("esto es un " +character);
+
 
  return(
-    <Form onClick={getCharacters} className="search__bar">
+    <Form onSubmit={getCharacters} className="search__bar">
         <InputGroup>
             <FormControl 
             placeholder="Ingrese un personaje" 
@@ -20,12 +23,12 @@ const Search = ({ findCharacters })=>{
         </InputGroup>
     </Form>
  );
-}
+};
 
 //documento el componente
 Search.propTypes ={
     findCharacters: PropTypes.func.isRequired,
-}
+};
 
 // nno quiero que se vuelva a redibujar el buscardor
 

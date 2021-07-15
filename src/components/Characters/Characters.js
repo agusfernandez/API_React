@@ -5,8 +5,7 @@ import Character from "../Character/Character";
 const Characters =({characters})=>{
     return(
         <Row>
-            {characters?.length>0 && characters.map((character)=>(
-                    <Character {...character}/>))}
+            {characters?.length>0 && characters.map((character)=><Character {...character}/>)}
         </Row>
     );
 };
