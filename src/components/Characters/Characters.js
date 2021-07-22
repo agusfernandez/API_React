@@ -11,8 +11,8 @@ const Characters =({characters})=>{
 };
 
 // defino las proptypes de characterss
-Characters.propTypes ={
-    characters:PropTypes.arrayOf(
+Characters.propTypes = {
+    characters: PropTypes.arrayOf(
         PropTypes.shape({
             created: PropTypes.string,
             gender:PropTypes.string,

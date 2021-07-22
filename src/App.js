@@ -12,14 +12,14 @@ function App() {
   const{results: characters, info} =data;
 
   //buscar por el character
-  const findCharacters = (character)=>{
-    setEndpoint(`charater?name=${character}`);
+  const findCharacters = (character) => {
+    setEndpoint(`character?name=${character}`);
   };
 
   console.log("findCharacters es "+ findCharacters.character);
 
   if(loading) return <Loading/>;
-
+  if (error) return <h4>hay un error</h4>
   return (
       <Container className="App">
         <Search findCharacters={findCharacters}/>

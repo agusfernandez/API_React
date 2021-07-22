@@ -4,6 +4,9 @@ import { InputGroup, FormControl, Form } from "react-bootstrap";
 
 const Search = ({ findCharacters })=>{
     const [character, setCharacter] = useState("");
+
+
+
     const getCharacters = (e)=>{
         e.preventDefault();
         findCharacters(character);
