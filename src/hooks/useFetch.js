@@ -1,24 +1,30 @@
-import {useCallback, useEffect, useState } from "react";
+import {useCallback, useEffect, useState, useReducer } from "react";
+import { ACTIONS } from "../actions/fetch";
 import {API} from "../API";
+import { fetchReducer, initialState } from "../reducers/fetch";
 
 //cargo los diferentes estados
 export const useFetch=(endpoint)=>{
  // seteo de los estados 
-    const [loading, setLoading ] = useState(true);
-    const [data, setData] = useState({});
-    const [error, setError] = useState(false);
+    // const [loading, setLoading ] = useState(true);
+    // const [data, setData] = useState({});
+    // const [error, setError] = useState(false);
+
 //funcion asincronica
 //axios es  igual a fetch y devuelve un objeto 
 //api.get($endpoint) me permite concatenar el link de la api + endpoint
 //useCallback permite que memorice una funcion 
+
+
+//dispatch es un metodo q permite actulziar
+const [state,dispatch] = useReducer(fetchReducer, initialState);
     const getData = useCallback(async()=>{
         try{
             //{data} con las llaves destructuro el objeto
             const {data}= await API.get(`${endpoint}`);
-            setData(data);
-            setLoading(false);
+            dispatch({type: ACTIONS.SET_DATA, payload:data});
         } catch(e){
-            setError(true);
+            dispatch({type: ACTIONS.SET_ERROR});
         };
 
         //esto cambia en funcion del endpoint 
@@ -29,6 +35,6 @@ export const useFetch=(endpoint)=>{
        getData();
     }, [endpoint, getData]);
 
-    return[data,loading,error];
+    return state;
 
 };

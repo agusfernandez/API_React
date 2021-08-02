@@ -8,15 +8,12 @@ import Search from './components/Search/Search';
 
 function App() {
   const[endpoint,setEndpoint] = useState("character");
-  const[data,loading,error] = useFetch(endpoint);
+  const{data,loading,error} = useFetch(endpoint);
   const{results: characters, info} =data;
-
   //buscar por el character
   const findCharacters = (character) => {
     setEndpoint(`character?name=${character}`);
   };
-
-  console.log("findCharacters es "+ findCharacters.character);
 
   if(loading) return <Loading/>;
   if (error) return <h4>hay un error</h4>
