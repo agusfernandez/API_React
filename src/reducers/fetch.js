@@ -21,7 +21,7 @@ export const fetchReducer = (state,action)=>{
             },
         };
 
-        case ACTIONS.SET.ERROR:
+        case ACTIONS.SET_ERROR:
             return{
                 ...initialState,
                 error:true,
